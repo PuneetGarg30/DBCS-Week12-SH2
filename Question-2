@@ -1,0 +1,32 @@
+package dbms;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class InsertMethod {
+	   public static void main(String[] args) {
+		   try {
+			   Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/EmployeeDatabase", "root", "root");
+			   Statement stmt = conn.createStatement();
+			   
+			   String insert = "INSERT INTO Employees VALUES (1, 'Amit', 'Gupta', 30000, 011, 'gargpuneet217@gmail.com', 'Dehi' );";
+			   stmt.executeUpdate(insert);
+			   
+			   String insert1 = "INSERT INTO Employees VALUES (2, 'Sukrut', 'Gupta', 23000, 671, 'sukurotoo@gmail.com', 'Chandigarh' );";
+			   stmt.executeUpdate(insert1);
+			   
+			   String insert2 = "INSERT INTO Employees VALUES (3, 'Sanchit', 'Sharma', 340, 982, 'sanchisharma@gmail.com', 'Mumbai' );";
+			   stmt.executeUpdate(insert2);
+			   
+			   String insert3 = "INSERT INTO Employees VALUES (4, 'Puneet', 'Garg', 23491, 23, 'gargpuneet217@gmail.com', 'Dehi' );";
+			   stmt.executeUpdate(insert3);
+			   
+			   String insert4 = "INSERT INTO Employees VALUES (5, 'Amit', 'oberoi', 92082, 06, 'gargpuneet217@gmail.com', 'Chandigarh' );";
+			   stmt.executeUpdate(insert4);
+		   }
+		   catch(Exception e) {
+			   e.printStackTrace();
+		   }
+	   }
+}
