@@ -1,0 +1,34 @@
+package dbms;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class updatingMethod {
+	   public static void main(String[] args) {
+		   try {
+			   Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/EmployeeDatabase", "root", "root");
+			   String insert = "Update Employees set name = 'Rahul' where Emp_ID ='1';";
+			   String ret = "Select * from Employees where Emp_ID ='1';";
+			   Statement stmt = conn.createStatement();
+			   stmt.executeUpdate(insert);
+			   ResultSet rs = stmt.executeQuery(ret);
+			   
+			   while (rs.next()) {
+		            int id = rs.getInt("Emp_ID");
+		            String firstname = rs.getString("First_name");
+		            String lastname = rs.getString("Last_name");
+                    int salary = rs.getInt("Salary");
+		            int dept_ID = rs.getInt("Dept_ID");
+		            String email = rs.getString("Email");
+		            String city = rs.getString("City");
+
+		            System.out.println("Employee ID" + id+"   "+ "Employee Name" + firstname+" "+lastname+"    "+"Salary"+salary+"     "+"Department ID" + dept_ID+"     "+"Email ID"+email+"     "+"City"+city +"\n");
+		         }
+		   }
+		   catch(Exception e) {
+			   e.printStackTrace();
+		   }
+	   }
+}
